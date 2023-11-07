@@ -80,13 +80,13 @@ subprojects {
 // datahub-app-external-api가 domain-login, domain-post에 의존
 project(":datahub-app-external-api") {
 	dependencies {
-		implementation(project(":domain-login"))
-		implementation(project(":domain-post"))
+		implementation(project(":domain:domain-login"))
+		implementation(project(":domain:domain-post"))
 	}
 }
 
 //login 설정
-project(":domain-login") {
+project(":domain:domain-login") {
 	val jar: Jar by tasks
 	val bootJar: BootJar by tasks
 
@@ -96,11 +96,31 @@ project(":domain-login") {
 }
 
 // post 설정
-project(":domain-post") {
+project(":domain:domain-post") {
 	val jar: Jar by tasks
 	val bootJar: BootJar by tasks
 
 	bootJar.enabled = false
 	jar.enabled = true
+}
+project(":domain:domain-user") {
+	val jar: Jar by tasks
+	val bootJar: BootJar by tasks
 
+	bootJar.enabled = false
+	jar.enabled = true
+}
+project(":domain:domain-article") {
+	val jar: Jar by tasks
+	val bootJar: BootJar by tasks
+
+	bootJar.enabled = false
+	jar.enabled = true
+}
+project(":domain:domain-system") {
+	val jar: Jar by tasks
+	val bootJar: BootJar by tasks
+
+	bootJar.enabled = false
+	jar.enabled = true
 }
