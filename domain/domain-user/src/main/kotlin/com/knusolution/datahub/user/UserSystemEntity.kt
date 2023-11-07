@@ -10,9 +10,9 @@ data class UserSystemEntity(
 
     @ManyToMany(fetch = FetchType.LAZY) // 지연 로딩 설정
     @JoinColumn(name = "systemId")
-    val systemId: SystemEntity,
+    val systemId: Collection<SystemEntity>,
 
     @ManyToMany(fetch = FetchType.LAZY) // 지연 로딩 설정
     @JoinColumn(name = "userId")
-    val userId: UserEntity
+    val userId: Collection<UserEntity>
 )

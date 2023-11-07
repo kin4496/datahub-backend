@@ -2,7 +2,7 @@ package com.knusolution.datahub.system
 
 import org.jetbrains.annotations.NotNull
 import javax.persistence.*
-
+@Entity
 data class DetailCategoryEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
