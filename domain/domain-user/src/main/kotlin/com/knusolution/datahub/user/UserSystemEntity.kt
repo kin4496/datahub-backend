@@ -2,7 +2,7 @@ package com.knusolution.datahub.user
 
 import com.knusolution.datahub.system.SystemEntity
 import javax.persistence.*
-
+@Entity
 data class UserSystemEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
