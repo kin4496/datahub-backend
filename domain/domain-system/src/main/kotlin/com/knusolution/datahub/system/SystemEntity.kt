@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull
 import javax.persistence.*
 
 @Entity
+@Table(name = "db_system")
 data class SystemEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

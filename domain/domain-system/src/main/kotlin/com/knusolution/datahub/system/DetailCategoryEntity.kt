@@ -3,6 +3,7 @@ package com.knusolution.datahub.system
 import org.jetbrains.annotations.NotNull
 import javax.persistence.*
 @Entity
+@Table(name = "DetailCategory")
 data class DetailCategoryEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
