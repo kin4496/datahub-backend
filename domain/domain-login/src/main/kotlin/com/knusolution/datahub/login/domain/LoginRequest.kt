@@ -1,5 +1,6 @@
 package com.knusolution.datahub.login.domain
 
-data class LoginRequestDto(
-    val loginId:String
+data class LoginRequest(
+    val loginId:String,
+    val password:String,
 )
