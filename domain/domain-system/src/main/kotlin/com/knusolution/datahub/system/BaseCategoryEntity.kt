@@ -16,5 +16,9 @@ data class BaseCategoryEntity(
 
     @ManyToOne(fetch = FetchType.LAZY) // 지연 로딩 설정
     @JoinColumn(name = "systemId")
-    val systemId:SystemEntity
+    val system:SystemEntity
 )
+
+fun BaseCategoryDto.asEntity(system:SystemEntity) = BaseCategoryEntity(
+    baseCategoryName = this.baseCategoryName,
+    system = system)
