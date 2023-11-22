@@ -43,7 +43,7 @@ subprojects {
 		implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
 		// DB
-		runtimeOnly("mysql:mysql-connector-java:8.0.32")
+		runtimeOnly("mysql:mysql-connector-java:8.0.25")
 
 		// test
 		testImplementation("org.springframework.boot:spring-boot-starter-test")
