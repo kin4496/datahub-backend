@@ -21,10 +21,10 @@ data class ArticleEntity(
 
     @NotNull
     @Column
-    val approval : String,
+    var approval : String,
 
     @Column
-    val declineDetail : String,
+    var declineDetail : String,
 
     @NotNull
     @Column
@@ -35,10 +35,10 @@ data class ArticleEntity(
     val taskFileName : String,
 
     @Column
-    val declineFileUrl : String,
+    var declineFileUrl : String,
 
     @Column
-    val declineFileName : String,
+    var declineFileName : String,
 
     @ManyToOne(fetch = FetchType.LAZY) // 지연 로딩 설정
     @JoinColumn(name = "detailCategoryId")
