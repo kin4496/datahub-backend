@@ -1,6 +1,6 @@
-package com.knusolution.datahub.post.controller
+package com.knusolution.datahub.controll
 
-import com.knusolution.datahub.post.service.PostService
+import com.knusolution.datahub.application.PostService
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 

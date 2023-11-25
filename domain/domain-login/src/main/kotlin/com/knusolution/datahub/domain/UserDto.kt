@@ -1,4 +1,4 @@
-package com.knusolution.datahub.user
+package com.knusolution.datahub.domain
 
 data class UserDto(
     val loginId:String,

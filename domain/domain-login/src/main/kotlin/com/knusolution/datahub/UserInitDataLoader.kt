@@ -1,9 +1,9 @@
-package com.knusolution.datahub.login
+package com.knusolution.datahub
 
-import com.knusolution.datahub.user.Role
-import com.knusolution.datahub.user.UserDto
-import com.knusolution.datahub.user.UserRepository
-import com.knusolution.datahub.user.asEntity
+import com.knusolution.datahub.domain.Role
+import com.knusolution.datahub.domain.UserDto
+import com.knusolution.datahub.domain.UserRepository
+import com.knusolution.datahub.domain.asEntity
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 

@@ -1,4 +1,4 @@
-package com.knusolution.datahub.login.domain
+package com.knusolution.datahub.domain
 
 data class LoginRequest(
     val loginId:String,

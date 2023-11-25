@@ -1,8 +1,6 @@
-package com.knusolution.datahub.login.domain
+package com.knusolution.datahub.domain
 
 import com.knusolution.datahub.system.SystemDto
-import com.knusolution.datahub.user.Role
-import com.knusolution.datahub.user.UserDto
 
 data class JoinRequest(
     val systemName:String,// 시스템명

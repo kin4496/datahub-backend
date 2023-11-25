@@ -1,4 +1,4 @@
-package com.knusolution.datahub.article
+package com.knusolution.datahub.domain
 
 import com.knusolution.datahub.system.DetailCategoryEntity
 import java.time.LocalDateTime
