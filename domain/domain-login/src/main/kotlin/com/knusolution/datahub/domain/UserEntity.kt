@@ -1,4 +1,4 @@
-package com.knusolution.datahub.user
+package com.knusolution.datahub.domain
 
 import com.knusolution.datahub.system.SystemEntity
 import org.jetbrains.annotations.NotNull
@@ -49,7 +49,7 @@ data class UserEntity(
 
     @NotNull
     @Column
-    val role:Role,
+    val role: Role,
 
     @ManyToMany
     @JoinTable(name = "user_system",
@@ -62,13 +62,14 @@ enum class Role{
     ADMIN,USER
 }
 
-fun UserDto.asEntity(password: String) = UserEntity(
-    loginId = this.loginId,
-    password = password,
-    companyName = this.companyName,
-    developerName = this.developerName,
-    contactNum = this.contactNum,
-    department = this.department,
-    departmentName = this.departmentName,
-    role = this.role
-)
+fun UserDto.asEntity(password: String) =
+    UserEntity(
+        loginId = this.loginId,
+        password = password,
+        companyName = this.companyName,
+        developerName = this.developerName,
+        contactNum = this.contactNum,
+        department = this.department,
+        departmentName = this.departmentName,
+        role = this.role
+    )

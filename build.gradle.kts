@@ -103,20 +103,8 @@ project(":domain:domain-post") {
 	bootJar.enabled = false
 	jar.enabled = true
 }
-project(":domain:domain-user") {
-	val jar: Jar by tasks
-	val bootJar: BootJar by tasks
 
-	bootJar.enabled = false
-	jar.enabled = true
-}
-project(":domain:domain-article") {
-	val jar: Jar by tasks
-	val bootJar: BootJar by tasks
-
-	bootJar.enabled = false
-	jar.enabled = true
-}
+//system 설정
 project(":domain:domain-system") {
 	val jar: Jar by tasks
 	val bootJar: BootJar by tasks
