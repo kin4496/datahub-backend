@@ -10,14 +10,14 @@ class PostController(
 ){
     @GetMapping("/articles")
     fun getArticles() = postService.getArticles()
-    @PostMapping("/file/article")
+    @PostMapping("/article")
     fun postArticle(
         @RequestParam detailCategoryId : Long,
         @RequestPart file : MultipartFile
     ){
         postService.saveArticle(detailCategoryId, file)
     }
-    @PutMapping("/decline/article")
+    @PutMapping("/article-review")
     fun postDeclineFile(
         @RequestParam articleId : Long,
         @RequestParam approval : String,
