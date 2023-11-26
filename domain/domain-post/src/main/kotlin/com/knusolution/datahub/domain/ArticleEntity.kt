@@ -17,7 +17,7 @@ data class ArticleEntity(
 
     @NotNull
     @Column
-    val uploadDate : LocalDateTime,
+    val uploadDate : String,
 
     @NotNull
     @Column
@@ -46,7 +46,7 @@ data class ArticleEntity(
 
     )
 
-fun ArticleDto.asEntity() = ArticleEntity(
+fun ArticleDto.asEntity( detailCategory : DetailCategoryEntity ) = ArticleEntity(
     uploadDate = this.uploadDate,
     approval = this.approval,
     declineDetail = this.declineDetail,
@@ -54,5 +54,5 @@ fun ArticleDto.asEntity() = ArticleEntity(
     taskFileName = this.taskFileName,
     declineFileUrl = this.declineFileUrl,
     declineFileName = this.declineFileName,
-    detailCategoryId = this.detailCategoryId
+    detailCategoryId = detailCategory
 )
