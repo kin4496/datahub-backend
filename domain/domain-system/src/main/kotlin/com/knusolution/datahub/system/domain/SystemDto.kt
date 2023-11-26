@@ -1,16 +1,28 @@
-package com.knusolution.datahub.system
+package com.knusolution.datahub.system.domain
 
 data class SystemDto(
     val systemName:String
 )
 data class BaseCategoryDto(
+    val baseCategoryId:Long = 0,
     val baseCategoryName:String,
 )
+
+fun BaseCategoryEntity.asDto() = BaseCategoryDto(
+    baseCategoryId = this.baseCategoryId,
+    baseCategoryName = this.baseCategoryName,
+)
 data class DetailCategoryDto(
+    val detailCategoryId: Long = 0,
     val detailCategoryName:String,
 )
 
-fun getBaseCategory() = baseCategories.map{BaseCategoryDto(baseCategoryName = it)}
+fun DetailCategoryEntity.asDto() = DetailCategoryDto(
+    detailCategoryId = this.detailCategoryId,
+    detailCategoryName = this.detailCategoryName,
+)
+
+fun getBaseCategory() = baseCategories.map{ BaseCategoryDto(baseCategoryName = it) }
 fun getDetailCategory(baseCategoryName: String) = detailCategories
     .getOrDefault(baseCategoryName, listOf())
     .map { DetailCategoryDto(detailCategoryName = it) }

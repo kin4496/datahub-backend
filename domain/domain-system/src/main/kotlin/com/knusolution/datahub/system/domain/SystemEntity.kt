@@ -1,4 +1,4 @@
-package com.knusolution.datahub.system
+package com.knusolution.datahub.system.domain
 
 import org.jetbrains.annotations.NotNull
 import javax.persistence.*

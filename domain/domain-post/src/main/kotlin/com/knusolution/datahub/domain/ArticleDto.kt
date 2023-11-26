@@ -1,6 +1,6 @@
 package com.knusolution.datahub.domain
 
-import com.knusolution.datahub.system.DetailCategoryEntity
+import com.knusolution.datahub.system.domain.DetailCategoryEntity
 import java.time.LocalDateTime
 
 data class ArticleDto(
@@ -11,5 +11,5 @@ data class ArticleDto(
     val taskFileName:String,
     val declineFileUrl:String,
     val declineFileName:String,
-    val detailCategoryId:DetailCategoryEntity
+    val detailCategoryId: DetailCategoryEntity
 )

@@ -1,4 +1,4 @@
-package com.knusolution.datahub.system
+package com.knusolution.datahub.system.domain
 
 import org.springframework.data.jpa.repository.JpaRepository
 

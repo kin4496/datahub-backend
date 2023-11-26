@@ -1,13 +1,14 @@
 package com.knusolution.datahub.application
 
 import com.knusolution.datahub.domain.*
-import com.knusolution.datahub.system.*
 import org.springframework.stereotype.Service
 import com.knusolution.datahub.domain.UserRepository
+import com.knusolution.datahub.system.domain.*
+
 @Service
 class LoginService(
     private val userRepository: UserRepository,
-    private val systemRepository:SystemRepository,
+    private val systemRepository: SystemRepository,
     private val baseCategoryRepository: BaseCategoryRepository,
     private val detailCategoryRepository: DetailCategoryRepository,
 ){
@@ -33,9 +34,9 @@ class LoginService(
     fun loginUser(req: LoginRequest): LoginResponse?
     {
         val userEntity = userRepository.findByLoginId(req.loginId)
-        val userDto = userEntity?.let {
-            val systems = it.systems
-            if(req.password == it.password) it.asUserDto() else null
+        val userDto = userEntity?.let { it ->
+            val systemIds = it.systems.toList().map { system -> system.systemId }
+            if(req.password == it.password) it.asUserDto(systemIds = systemIds) else null
         }
         return userDto?.asLoginResponse(accessToken = "")
     }

@@ -1,4 +1,4 @@
-package com.knusolution.datahub.system
+package com.knusolution.datahub.system.domain
 
 import org.jetbrains.annotations.NotNull
 import javax.persistence.*
@@ -16,9 +16,9 @@ data class BaseCategoryEntity(
 
     @ManyToOne(fetch = FetchType.LAZY) // 지연 로딩 설정
     @JoinColumn(name = "systemId")
-    val system:SystemEntity
+    val system: SystemEntity
 )
 
-fun BaseCategoryDto.asEntity(system:SystemEntity) = BaseCategoryEntity(
+fun BaseCategoryDto.asEntity(system: SystemEntity) = BaseCategoryEntity(
     baseCategoryName = this.baseCategoryName,
     system = system)
