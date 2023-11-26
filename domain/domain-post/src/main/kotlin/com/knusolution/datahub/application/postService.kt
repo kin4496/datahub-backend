@@ -3,7 +3,7 @@ package com.knusolution.datahub.application
 import com.knusolution.datahub.domain.ArticleDto
 import com.knusolution.datahub.domain.asEntity
 import com.knusolution.datahub.domain.ArticleRepository
-import com.knusolution.datahub.system.DetailCategoryRepository
+import com.knusolution.datahub.system.domain.DetailCategoryRepository
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 import java.io.File

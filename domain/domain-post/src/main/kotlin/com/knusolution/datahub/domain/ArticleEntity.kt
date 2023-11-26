@@ -1,6 +1,6 @@
 package com.knusolution.datahub.domain
 
-import com.knusolution.datahub.system.DetailCategoryEntity
+import com.knusolution.datahub.system.domain.DetailCategoryEntity
 import org.jetbrains.annotations.NotNull
 import javax.persistence.Column
 import javax.persistence.GeneratedValue
@@ -42,7 +42,7 @@ data class ArticleEntity(
 
     @ManyToOne(fetch = FetchType.LAZY) // 지연 로딩 설정
     @JoinColumn(name = "detailCategoryId")
-    val detailCategoryId:DetailCategoryEntity
+    val detailCategoryId: DetailCategoryEntity
 
     )
 
