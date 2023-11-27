@@ -2,6 +2,7 @@ package com.knusolution.datahub.controll
 
 import com.knusolution.datahub.application.ArticleResponse
 import com.knusolution.datahub.application.PostService
+import com.knusolution.datahub.domain.ArticleDto
 import com.knusolution.datahub.domain.asDto
 import com.knusolution.datahub.system.domain.asDto
 import org.springframework.web.bind.annotation.*
@@ -11,6 +12,11 @@ import org.springframework.web.multipart.MultipartFile
 class PostController(
     private val postService : PostService
 ){
+    @GetMapping("/wait-article")
+    fun waitArticles(): List<ArticleDto>
+    {
+        return postService.getWaitArticles().map{it.asDto()}
+    }
     @GetMapping("/articles")
     fun getArticles(
         @RequestParam detailCategoryId: Long,
@@ -18,7 +24,7 @@ class PostController(
     ):ArticleResponse?
     {
         val allpage = postService.getPage(detailCategoryId)
-        val articles = postService.getarticles(detailCategoryId,page).map{it.asDto()}
+        val articles = postService.getArticles(detailCategoryId,page).map{it.asDto()}
 
         return ArticleResponse(allPage = allpage, page = page, articles = articles)
     }
