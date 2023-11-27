@@ -19,7 +19,14 @@ class PostService(
 ){
     val uploadDir= "C:\\Users\\in_q\\Documents\\etc\\"
     val pageSize=10
-    fun getarticles(detailCategoryId: Long,page: Int): List<ArticleEntity>{
+
+    fun getWaitArticles(): List<ArticleEntity>
+    {
+        val aprove="대기"
+        val articles=articleRepository.findByApproval(aprove)
+        return articles
+    }
+    fun getArticles(detailCategoryId: Long,page: Int): List<ArticleEntity>{
         val existingDetailCategory = detailCategoryRepository.findById(detailCategoryId)
         val detailCategory = existingDetailCategory.get()
         val articles=articleRepository.findByDetailCategoryId(detailCategory)
