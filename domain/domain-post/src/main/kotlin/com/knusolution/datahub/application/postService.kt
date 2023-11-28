@@ -74,7 +74,7 @@ class PostService(
         val saveFileName = getSaveFileName(originalFileName)
         val fileUrl = uploadDir+saveFileName
         file.transferTo(File(fileUrl))
-        val datetime=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/-MM-dd HH:mm"))
+        val datetime=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
         val article = ArticleDto( datetime , "대기" ,"",fileUrl,originalFileName ?: detailCategory.detailCategoryName ,"","",detailCategory)
         articleRepository.save(article.asEntity())
     }
