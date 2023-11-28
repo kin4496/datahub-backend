@@ -1,4 +1,4 @@
-package com.knusolution.datahub.application
+package com.knusolution.datahub.domain
 
 import com.knusolution.datahub.domain.ArticleDto
 import com.knusolution.datahub.domain.ArticleInfoDto

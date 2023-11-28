@@ -1,10 +1,7 @@
 package com.knusolution.datahub.controll
 
-import com.knusolution.datahub.application.ArticleResponse
+import com.knusolution.datahub.domain.ArticleResponse
 import com.knusolution.datahub.application.PostService
-import com.knusolution.datahub.domain.ArticleDto
-import com.knusolution.datahub.domain.ArticleInfoDto
-import com.knusolution.datahub.domain.asDto
 import com.knusolution.datahub.domain.asInfoDto
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
@@ -24,7 +21,7 @@ class PostController(
     fun getArticles(
         @RequestParam detailCategoryId: Long,
         @RequestParam page: Int
-    ):ArticleResponse?
+    ): ArticleResponse?
     {
         val allpage = postService.getPage(detailCategoryId)
         val articles = postService.getArticles(detailCategoryId,page).map{it.asInfoDto()}
