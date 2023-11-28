@@ -46,7 +46,7 @@ data class ArticleEntity(
 
     )
 
-fun ArticleDto.asEntity( detailCategory : DetailCategoryEntity ) = ArticleEntity(
+fun ArticleDto.asEntity( ) = ArticleEntity(
     uploadDate = this.uploadDate,
     approval = this.approval,
     declineDetail = this.declineDetail,
@@ -54,5 +54,5 @@ fun ArticleDto.asEntity( detailCategory : DetailCategoryEntity ) = ArticleEntity
     taskFileName = this.taskFileName,
     declineFileUrl = this.declineFileUrl,
     declineFileName = this.declineFileName,
-    detailCategoryId = detailCategory
+    detailCategoryId = this.detailCategoryId
 )

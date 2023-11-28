@@ -1,9 +1,6 @@
 package com.knusolution.datahub.application
 
-import com.knusolution.datahub.domain.ArticleDto
-import com.knusolution.datahub.domain.ArticleEntity
-import com.knusolution.datahub.domain.asEntity
-import com.knusolution.datahub.domain.ArticleRepository
+import com.knusolution.datahub.domain.*
 import com.knusolution.datahub.system.domain.DetailCategoryRepository
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
@@ -20,12 +17,32 @@ class PostService(
     val uploadDir= "C:\\Users\\in_q\\Documents\\etc\\"
     val pageSize=10
 
-    fun getWaitArticles(): List<ArticleEntity>
+    fun getWaitPage():Int
     {
         val aprove="대기"
         val articles=articleRepository.findByApproval(aprove)
-        return articles
+        val allpage = if (articles.size % pageSize == 0) {
+            articles.size / pageSize
+        } else {
+            articles.size / pageSize + 1
+        }
+
+        return allpage
     }
+
+    fun getWaitArticles(page: Int): List<ArticleEntity>
+    {
+        val aprove="대기"
+        val articles=articleRepository.findByApproval(aprove)
+
+        val startIndex=(page-1)*pageSize
+        if (startIndex >= articles.size) {
+            return emptyList()
+        }
+        val endIndex = startIndex + pageSize
+        return articles.subList(startIndex, minOf(endIndex, articles.size))
+    }
+
     fun getArticles(detailCategoryId: Long,page: Int): List<ArticleEntity>{
         val existingDetailCategory = detailCategoryRepository.findById(detailCategoryId)
         val detailCategory = existingDetailCategory.get()
@@ -58,8 +75,8 @@ class PostService(
         val fileUrl = uploadDir+saveFileName
         file.transferTo(File(fileUrl))
         val datetime=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/-MM-dd HH:mm"))
-        val article = ArticleDto( datetime , "대기" ,"",fileUrl,originalFileName ?: detailCategory.detailCategoryName ,"","")
-        articleRepository.save(article.asEntity( detailCategory ))
+        val article = ArticleDto( datetime , "대기" ,"",fileUrl,originalFileName ?: detailCategory.detailCategoryName ,"","",detailCategory)
+        articleRepository.save(article.asEntity())
     }
     fun postDeclineFile(articleId : Long , approval : String , declineDetail : String , file : MultipartFile){
         val existingArticle = articleRepository.findById(articleId)
