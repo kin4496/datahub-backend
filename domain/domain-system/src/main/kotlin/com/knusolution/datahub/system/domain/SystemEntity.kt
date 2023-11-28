@@ -12,7 +12,7 @@ data class SystemEntity(
 
     @NotNull
     @Column
-    val systemName:String,
+    var systemName:String,
 )
 
 fun SystemDto.asEntity() = SystemEntity(systemName = this.systemName)
