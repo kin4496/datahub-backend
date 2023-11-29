@@ -78,12 +78,12 @@ class PostService(
         val article = ArticleDto( datetime , "대기" ,"",fileUrl,originalFileName ?: detailCategory.detailCategoryName ,"","",detailCategory)
         articleRepository.save(article.asEntity())
     }
-    fun postDeclineFile(articleId : Long , approval : String , declineDetail : String , file : MultipartFile){
+    fun postDeclineFile(articleId : Long , approval : String , declineDetail : String? , file : MultipartFile?){
         val existingArticle = articleRepository.findById(articleId)
         val article = existingArticle.get()
         article.approval = approval
 
-        if(approval == "반려" ) {
+        if(approval == "반려" && file != null && declineDetail!= null ) {
             val originalFileName = file.originalFilename
             val saveFileName = getSaveFileName(originalFileName)
 
