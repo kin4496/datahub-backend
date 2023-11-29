@@ -21,31 +21,31 @@ data class UserEntity(
 
     @NotNull
     @Column
-    val loginId:String,
+    var loginId:String,
 
     @NotNull
     @Column
-    val password:String,
+    var password:String,
 
     @NotNull
     @Column
-    val companyName:String,
+    var companyName:String,
 
     @NotNull
     @Column
-    val developerName:String,
+    var developerName:String,
 
     @NotNull
     @Column
-    val contactNum:String,
+    var contactNum:String,
 
     @NotNull
     @Column
-    val department:String,
+    var department:String,
 
     @NotNull
     @Column
-    val departmentName:String,
+    var departmentName:String,
 
     @NotNull
     @Column
