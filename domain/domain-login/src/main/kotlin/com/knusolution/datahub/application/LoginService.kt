@@ -4,6 +4,7 @@ import com.knusolution.datahub.domain.*
 import org.springframework.stereotype.Service
 import com.knusolution.datahub.domain.UserRepository
 import com.knusolution.datahub.system.domain.*
+import javax.transaction.Transactional
 
 @Service
 class LoginService(
@@ -41,4 +42,21 @@ class LoginService(
         return userDto?.asLoginResponse(accessToken = "")
     }
     fun exitsUserByLoginId(loginId:String) = userRepository.existsByLoginId(loginId)
+    fun updateUser(req:UpdateRequest)
+    {
+        val userEntity = userRepository.findByLoginId(req.loginId)
+        userEntity?.let {
+            req.updateUserEntity(it)
+            updateDBSystem(it,req)
+            userRepository.save(it)
+        }
+    }
+    fun updateDBSystem(userEntity: UserEntity,req:UpdateRequest)
+    {
+        val system = userEntity.systems?.firstOrNull()
+        system?.let {
+            it.systemName = req.systemName
+            systemRepository.save(system)
+        }
+    }
 }
