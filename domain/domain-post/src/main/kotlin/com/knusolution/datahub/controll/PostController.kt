@@ -40,8 +40,8 @@ class PostController(
     fun postDeclineFile(
         @RequestParam articleId : Long,
         @RequestParam approval : String,
-        @RequestParam(required = false) declineDetail :String,
-        @RequestPart(required = false) file : MultipartFile
+        @RequestParam(required = false) declineDetail :String?,
+        @RequestPart(required = false) file : MultipartFile?
     ){
         postService.postDeclineFile(articleId, approval, declineDetail, file)
     }
