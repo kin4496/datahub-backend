@@ -37,7 +37,7 @@ class PostService(
     fun getWaitArticles(page: Int): List<ArticleEntity>
     {
         val aprove="대기"
-        val articles=articleRepository.findByApproval(aprove)
+        val articles=articleRepository.findByApproval(aprove).reversed()
 
         val startIndex=(page-1)*pageSize
         if (startIndex >= articles.size) {
@@ -50,7 +50,7 @@ class PostService(
     fun getArticles(detailCategoryId: Long,page: Int): List<ArticleEntity>{
         val existingDetailCategory = detailCategoryRepository.findById(detailCategoryId)
         val detailCategory = existingDetailCategory.get()
-        val articles=articleRepository.findByDetailCategoryId(detailCategory)
+        val articles=articleRepository.findByDetailCategoryId(detailCategory).reversed()
         val startIndex=(page-1)*pageSize
         if (startIndex >= articles.size) {
             return emptyList()
