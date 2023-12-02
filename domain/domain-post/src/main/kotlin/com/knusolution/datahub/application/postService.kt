@@ -7,7 +7,6 @@ import com.knusolution.datahub.system.domain.DetailCategoryRepository
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
-import java.io.File
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -20,7 +19,6 @@ class PostService(
     private val bucket: String,
     private val amazonS3: AmazonS3
 ){
-    val uploadDir= "C:\\Users\\in_q\\Documents\\etc\\"
     val pageSize=10
 
     fun getWaitPage():Int
